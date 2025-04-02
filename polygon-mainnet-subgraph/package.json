@@ -1,0 +1,13 @@
+{
+    "name": "oboswap-subgraph",
+    "version": "1.0.0",
+    "scripts": {
+        "codegen": "graph codegen",
+        "build": "graph build",
+        "deploy": "graph deploy --product hosted-service YOUR_USERNAME/oboswap"
+    },
+    "devDependencies": {
+        "@graphprotocol/graph-cli": "0.96.0",
+        "@graphprotocol/graph-ts": "0.38.0"
+    }
+}

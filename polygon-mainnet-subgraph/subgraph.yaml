@@ -1,0 +1,78 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MasterChef
+    network: matic
+    source:
+      address: "0x988c33D345b0565a9F5B1D0f5074cb78071e038e"
+      abi: MasterChef
+      startBlock: 22894353
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdraw
+        - EmergencyWithdraw
+        - Referral
+        - ReferralPaid
+      abis:
+        - name: MasterChef
+          file: ./abis/MasterChef.json
+      eventHandlers:
+        - event: Deposit(indexed address,indexed uint256,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,indexed uint256,uint256)
+          handler: handleWithdraw
+        - event: EmergencyWithdraw(indexed address,indexed uint256,uint256)
+          handler: handleEmergencyWithdraw
+        - event: Referral(indexed address,indexed address)
+          handler: handleReferral
+        - event: ReferralPaid(indexed address,indexed address,uint256)
+          handler: handleReferralPaid
+      file: ./src/masterchef.ts
+
+  - kind: ethereum
+    name: Oboswapfactory
+    network: matic
+    source:
+      address: "0x3A43c0bCcb4edc19FEa8E83c80cfc688Da93E7C7"
+      abi: Factory
+      startBlock: 22893539
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: Factory
+          file: ./abis/Factory.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: ./src/factory.ts
+
+  - kind: ethereum
+    name: OboswapRouter
+    network: matic
+    source:
+      address: "0x8F3a13AeA609A34C34E3f598ed594E1e2bEE3E5c"
+      abi: Router
+      startBlock: 22893959
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: Router
+          file: ./abis/Router.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleRouterPairCreated
+      file: ./src/router.ts
