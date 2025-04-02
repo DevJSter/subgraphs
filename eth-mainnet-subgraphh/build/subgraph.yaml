@@ -1,0 +1,76 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MasterChef
+    network: mainnet
+    source:
+      address: "0x6c716af369343bb723415d95e33c406e6a7d61fb"
+      abi: MasterChef
+      startBlock: 13886444
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdraw
+        - EmergencyWithdraw
+        - Referral
+        - ReferralPaid
+      abis:
+        - name: MasterChef
+          file: MasterChef\MasterChef.json
+      eventHandlers:
+        - event: Deposit(indexed address,indexed uint256,uint256)
+          handler: handleDeposit
+        - event: Withdraw(indexed address,indexed uint256,uint256)
+          handler: handleWithdraw
+        - event: EmergencyWithdraw(indexed address,indexed uint256,uint256)
+          handler: handleEmergencyWithdraw
+        - event: Referral(indexed address,indexed address)
+          handler: handleReferral
+        - event: ReferralPaid(indexed address,indexed address,uint256)
+          handler: handleReferralPaid
+      file: MasterChef\MasterChef.wasm
+  - kind: ethereum
+    name: Factory
+    network: mainnet
+    source:
+      address: "0xe71ec95e61f76e7dd86bba1c78a85f5e4b062e77"
+      abi: Factory
+      startBlock: 13880329
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: Factory
+          file: Factory\Factory.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handlePairCreated
+      file: Factory\Factory.wasm
+  - kind: ethereum
+    name: Router
+    network: mainnet
+    source:
+      address: "0xd38542ae5888e36440b995618d23c01a61ee5b5c"
+      abi: Router
+      startBlock: 13886357
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - PairCreated
+      abis:
+        - name: Router
+          file: Router\Router.json
+      eventHandlers:
+        - event: PairCreated(indexed address,indexed address,address,uint256)
+          handler: handleRouterPairCreated
+      file: Router\Router.wasm

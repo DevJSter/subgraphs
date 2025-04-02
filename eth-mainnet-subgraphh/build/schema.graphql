@@ -1,0 +1,46 @@
+type Deposit @entity {
+  id: ID!
+  user: Bytes!
+  pid: BigInt!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type Withdraw @entity {
+  id: ID!
+  user: Bytes!
+  pid: BigInt!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type EmergencyWithdraw @entity {
+  id: ID!
+  user: Bytes!
+  pid: BigInt!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type Referral @entity {
+  id: ID!
+  referrer: Bytes!
+  farmer: Bytes!
+  timestamp: BigInt!
+}
+
+type ReferralPaid @entity {
+  id: ID!
+  user: Bytes!
+  userTo: Bytes!
+  reward: BigInt!
+  timestamp: BigInt!
+}
+
+type PairCreated @entity {
+  id: ID!
+  token0: Bytes!
+  token1: Bytes!
+  pair: Bytes!
+  timestamp: BigInt!
+}
