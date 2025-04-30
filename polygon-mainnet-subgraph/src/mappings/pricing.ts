@@ -41,12 +41,17 @@ export function getEthPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  '0xfD5C2EDa66F7cFcFcbf87b6B1D6c395853e323A9', // WETH
-  '0xd01561862519d5096031EB9435D5d8B21D0FC7A9', // DAI
-  '0x15348de2A1Cb30688ec4717DfFC2F71899503F56', // USDC
-  '0x422E99b99F35EDD9763bd8F2BCe4573926DeA21f', // USDT
-  '0xa3fb5dCaF06c3A6e3Ff577A0Dbea9cd4941df493', // TUSD
-  '0xC53Dbc81e65f049f251cFE8F73EB335b57888e87', // cDAI
+  '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', // USDCOIN POS
+  '0xb8E67956C68c0160A3c13466D1806dDd96B8a8C0', // Oboswap token
+  '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', // Wrapped Polygon Ecosystem Token
+  '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', // (POS) Tether USD
+  '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', // (POS) DAI Stablecoin
+  '0xEA01906843Ea8D910658a2c485ffCe7C104AB2b6', // QToken
+  '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', // Wrapped Ether
+  '0x7c65f3899Cd7111aA3C98cd3bf2475D5AEB955BA', // Picton BeachComber Inn (Social Token)
+  '0x304A6a907632A776Ad70CEE70c27A368E07d30C5', // BETAINU
+  '0x4d46aa444f6Ba694e1494f32353C89e1bcC20813', // Betainu
+  '0x00A4Ff2747689DF79A6E017087a8eb71A67cB28D', // Betainu
 ];
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
