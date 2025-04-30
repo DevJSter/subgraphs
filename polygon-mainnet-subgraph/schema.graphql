@@ -1,4 +1,4 @@
-type UniswapFactory @entity (immutable: true) {
+type UniswapFactory @entity (immutable: false) {
   # factory address
   id: ID!
 
@@ -20,7 +20,7 @@ type UniswapFactory @entity (immutable: true) {
   txCount: BigInt!
 }
 
-type Token @entity (immutable: true) {
+type Token @entity (immutable: false) {
   # token address
   id: ID!
 
@@ -54,7 +54,7 @@ type Token @entity (immutable: true) {
   pairQuote: [Pair!]! @derivedFrom(field: "token1")
 }
 
-type Pair @entity (immutable: true) {
+type Pair @entity (immutable: false) {
   # pair address
   id: ID!
 
@@ -95,12 +95,12 @@ type Pair @entity (immutable: true) {
   swaps: [Swap!]! @derivedFrom(field: "pair")
 }
 
-type User @entity (immutable: true) {
+type User @entity (immutable: false) {
   id: ID!
   usdSwapped: BigDecimal!
 }
 
-type Transaction @entity (immutable: true){
+type Transaction @entity (immutable: false){
   id: ID! # txn hash
   blockNumber: BigInt!
   timestamp: BigInt!
@@ -111,7 +111,7 @@ type Transaction @entity (immutable: true){
   swaps: [Swap!]!
 }
 
-type Mint @entity (immutable: true) {
+type Mint @entity (immutable: false) {
   # transaction hash + "-" + index in mints Transaction array
   id: ID!
   transaction: Transaction!
@@ -135,7 +135,7 @@ type Mint @entity (immutable: true) {
   feeLiquidity: BigDecimal
 }
 
-type Burn @entity (immutable: true){
+type Burn @entity (immutable: false){
   # transaction hash + "-" + index in mints Transaction array
   id: ID!
   transaction: Transaction!
@@ -162,7 +162,7 @@ type Burn @entity (immutable: true){
   feeLiquidity: BigDecimal
 }
 
-type Swap @entity (immutable: true) {
+type Swap @entity (immutable: false) {
   # transaction hash + "-" + index in swaps Transaction array
   id: ID!
   transaction: Transaction!
@@ -184,7 +184,7 @@ type Swap @entity (immutable: true) {
 }
 
 # stores for USD calculations
-type Bundle @entity (immutable: true){
+type Bundle @entity (immutable: false){
   id: ID!
   ethPrice: BigDecimal! # price of ETH usd
 }
@@ -206,7 +206,7 @@ type UniswapDayData @entity (immutable: false) {
   txCount: BigInt!
 }
 
-type PairHourData @entity (immutable: true) {
+type PairHourData @entity (immutable: false) {
   id: ID!
   hourStartUnix: Int! # unix timestamp for start of hour
   pair: Pair!
@@ -229,7 +229,7 @@ type PairHourData @entity (immutable: true) {
 }
 
 # Data accumulated and condensed into day stats for each exchange
-type PairDayData @entity (immutable: true) {
+type PairDayData @entity (immutable: false) {
   id: ID!
   date: Int!
   pairAddress: Bytes!
@@ -253,7 +253,7 @@ type PairDayData @entity (immutable: true) {
   dailyTxns: BigInt!
 }
 
-type TokenDayData @entity (immutable: true) {
+type TokenDayData @entity (immutable: false) {
   id: ID!
   date: Int!
   token: Token!
