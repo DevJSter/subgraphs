@@ -4,10 +4,10 @@ import { Address, BigDecimal, BigInt } from '@graphprotocol/graph-ts/index'
 import { Bundle, Pair, Token } from '../types/schema'
 import { ADDRESS_ZERO, factoryContract, ONE_BD, UNTRACKED_PAIRS, ZERO_BD } from './helpers'
 
-const WETH_ADDRESS = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-const USDC_WETH_PAIR = '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc' // created 10008355
-const DAI_WETH_PAIR = '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11' // created block 10042267
-const USDT_WETH_PAIR = '0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852' // created block 10093341
+const WETH_ADDRESS = '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619' // WETH on Polygon
+const USDC_WETH_PAIR = '0x146Fe550F7750b66156Ec599Ee95983cDc7a3685' // 
+const DAI_WETH_PAIR = '0x9Eb1102D8F3c00bE588bF8F528B9AdcA7f5aFf23' // 
+const USDT_WETH_PAIR = '0xdDD5FEf8F9009D51f70282Ddc823Edb074062c45' //
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
@@ -41,28 +41,18 @@ export function getEthPriceInUSD(): BigDecimal {
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
-  '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
-  '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
-  '0xdac17f958d2ee523a2206206994597c13d831ec7', // USDT
-  '0x0000000000085d4780b73119b644ae5ecd22b376', // TUSD
-  '0x5d3a536e4d6dbd6114cc1ead35777bab948e3643', // cDAI
-  '0x39aa39c021dfbae8fac545936693ac917d5e7563', // cUSDC
-  '0x86fadb80d8d2cff3c3680819e4da99c10232ba0f', // EBASE
-  '0x57ab1ec28d129707052df4df418d58a2d46d5f51', // sUSD
-  '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2', // MKR
-  '0xc00e94cb662c3520282e6f5717214004a7f26888', // COMP
-  '0x514910771af9ca656af840dff83e8264ecf986ca', //LINK
-  '0x960b236a07cf122663c4303350609a66a7b288c0', //ANT
-  '0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f', //SNX
-  '0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e', //YFI
-  '0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8', // yCurv
-  '0x853d955acef822db058eb8505911ed77f175b99e', // FRAX
-  '0xa47c8bf37f92abed4a126bda807a7b7498661acd', // WUST
-  '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984', // UNI
-  '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599', // WBTC
-  '0x956f47f50a910163d8bf957cf5846d573e7f87ca', // FEI
-]
+  '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', // USDCOIN POS
+  '0xb8E67956C68c0160A3c13466D1806dDd96B8a8C0', // Oboswap token
+  '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', // Wrapped Polygon Ecosystem Token
+  '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', // (POS) Tether USD
+  '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', // (POS) DAI Stablecoin
+  '0xEA01906843Ea8D910658a2c485ffCe7C104AB2b6', // QToken
+  '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', // Wrapped Ether
+  '0x7c65f3899Cd7111aA3C98cd3bf2475D5AEB955BA', // Picton BeachComber Inn (Social Token)
+  '0x304A6a907632A776Ad70CEE70c27A368E07d30C5', // BETAINU
+  '0x4d46aa444f6Ba694e1494f32353C89e1bcC20813', // Betainu
+  '0x00A4Ff2747689DF79A6E017087a8eb71A67cB28D', // Betainu
+];
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
 let MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString('400000')
@@ -80,9 +70,12 @@ export function findEthPerToken(token: Token): BigDecimal {
   }
   // loop through whitelist and check if paired with any
   for (let i = 0; i < WHITELIST.length; ++i) {
-    let pairAddress = factoryContract.getPair(Address.fromString(token.id), Address.fromString(WHITELIST[i]))
-    if (pairAddress.toHexString() != ADDRESS_ZERO) {
-      let pair = Pair.load(pairAddress.toHexString())
+    let pairAddress = factoryContract.try_getPair(Address.fromString(token.id), Address.fromString(WHITELIST[i]))
+    if (pairAddress.reverted) {
+      continue
+    }
+    if (pairAddress.value.toHexString() != ADDRESS_ZERO) {
+      let pair = Pair.load(pairAddress.value.toHexString()) // load the pair
       if (pair === null) {
         continue
       }
