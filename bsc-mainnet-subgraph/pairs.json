@@ -1,0 +1,119 @@
+[
+    {
+      "pairAddress": "0x24dE45a797473Fb992963fF4C7783bdEEf906b5a",
+      "token0": {
+        "address": "0x8F3a13AeA609A34C34E3f598ed594E1e2bEE3E5c",
+        "name": "OboSwap Token",
+        "symbol": "OBO"
+      },
+      "token1": {
+        "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      }
+    },
+    {
+      "pairAddress": "0xe90c0AdDf0Ae6be11D8fB03d0f4b5BB3143D92AD",
+      "token0": {
+        "address": "0x8F3a13AeA609A34C34E3f598ed594E1e2bEE3E5c",
+        "name": "OboSwap Token",
+        "symbol": "OBO"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    },
+    {
+      "pairAddress": "0xf47C940B8D3C1a811258BD5c7617D61B86028D08",
+      "token0": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1": {
+        "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+        "name": "BUSD Token",
+        "symbol": "BUSD"
+      }
+    },
+    {
+      "pairAddress": "0x92a66D1fEB1890Ac9DcAbaB1B6dA37d9F5ef7D23",
+      "token0": {
+        "address": "0x55d398326f99059fF775485246999027B3197955",
+        "name": "Tether USD",
+        "symbol": "USDT"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    },
+    {
+      "pairAddress": "0xfbb05Ee00CcA73e24bD29d2b9692029Db7133036",
+      "token0": {
+        "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+        "name": "USD Coin",
+        "symbol": "USDC"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    },
+    {
+      "pairAddress": "0x0cE806BAE0e85e56D1e15D291761f973a8Cc384A",
+      "token0": {
+        "address": "0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3",
+        "name": "Dai Token",
+        "symbol": "DAI"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    },
+    {
+      "pairAddress": "0x4bc069FCf3A179dD0960cb8905Cc46185c521a25",
+      "token0": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      },
+      "token1": {
+        "address": "0xEA01906843Ea8D910658a2c485ffCe7C104AB2b6",
+        "name": "Qtoken",
+        "symbol": "QTO"
+      }
+    },
+    {
+      "pairAddress": "0x9164DeF16a12DBC421d545CE255C07eD43E244e9",
+      "token0": {
+        "address": "0x83D04D855E7bab31f1924eED2B41Db320860c9f6",
+        "name": "Beta Inu",
+        "symbol": "BETAINU"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    },
+    {
+      "pairAddress": "0x1CeD7FF710991F3e321C5D643cEa32ae8765ce84",
+      "token0": {
+        "address": "0x86769EB4bbe3abdAC9D1c924A08A763F5c42051A",
+        "name": "Beta Inu",
+        "symbol": "BETAINU"
+      },
+      "token1": {
+        "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "name": "Wrapped BNB",
+        "symbol": "WBNB"
+      }
+    }
+  ]
