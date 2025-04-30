@@ -6,8 +6,8 @@ import { ADDRESS_ZERO, factoryContract, ONE_BD, UNTRACKED_PAIRS, ZERO_BD } from 
 
 const WETH_ADDRESS = '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619' // WETH on Polygon
 const USDC_WETH_PAIR = '0x146Fe550F7750b66156Ec599Ee95983cDc7a3685' // 
-const DAI_WETH_PAIR = '0xa478c2975ab1ea89e8196811f51a7b7ade33eb11' // 
-const USDT_WETH_PAIR = '0x9Eb1102D8F3c00bE588bF8F528B9AdcA7f5aFf23' //
+const DAI_WETH_PAIR = '0x9Eb1102D8F3c00bE588bF8F528B9AdcA7f5aFf23' // 
+const USDT_WETH_PAIR = '0xdDD5FEf8F9009D51f70282Ddc823Edb074062c45' //
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
