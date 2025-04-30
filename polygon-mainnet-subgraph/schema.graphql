@@ -190,7 +190,7 @@ type Bundle @entity (immutable: true){
 }
 
 # Data accumulated and condensed into day stats for all of Uniswap
-type UniswapDayData @entity (immutable: true) {
+type UniswapDayData @entity (immutable: false) {
   id: ID! # timestamp rounded to current day by dividing by 86400
   date: Int!
 
